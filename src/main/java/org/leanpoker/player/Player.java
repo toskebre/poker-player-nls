@@ -71,7 +71,7 @@ public class Player {
             return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt();
         }
 
-        if (zbir > 18){
+        if (zbir > 16){
             return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt();
         }
         return 0;
