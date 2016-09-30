@@ -30,7 +30,7 @@ public class Card {
     HEARTS ("hearts"),
     SPADES ("spades"),
     CLUBS ("clubs"),
-    DIAMOND ("diamond");
+    DIAMONDS ("diamonds");
 
 
     private String value;
