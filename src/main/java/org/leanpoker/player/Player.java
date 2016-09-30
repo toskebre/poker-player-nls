@@ -143,6 +143,8 @@ public class Player {
                 return Card.CardNumber.K;
             case "14":
                 return Card.CardNumber.A;
+            default:
+                return Card.CardNumber.NINE;
         }
     }
 
