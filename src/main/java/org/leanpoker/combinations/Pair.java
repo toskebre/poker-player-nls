@@ -22,8 +22,10 @@ public class Pair extends CardCombination {
     boolean combinationHit = combinationHit(hand);
 
     if (combinationHit) {
+      System.out.println("NADJEN PAR. RAISE");
       return AStoIgrati.Action.RAISE;
     } else {
+      System.out.println("PAR NIJE NADJEN. CHECK FOLD");
       return AStoIgrati.Action.CHECK_FOLD;
     }
   }

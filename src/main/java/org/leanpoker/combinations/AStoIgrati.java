@@ -56,6 +56,7 @@ public class AStoIgrati {
       }
     }
 
+    System.out.println("ODIGRATI: " + currentAction.toString());
     return currentAction;
   }
 }

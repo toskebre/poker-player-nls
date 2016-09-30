@@ -22,8 +22,10 @@ public class ThreeOfAKind extends CardCombination {
     boolean combinationHit = combinationHit(hand);
 
     if (combinationHit) {
+      System.out.println("TRI ISTE NADJENE. RAISE");
       return AStoIgrati.Action.RAISE;
     } else {
+      System.out.println("TRI ISTE NISU NADJENE. CHECK FOLD");
       return AStoIgrati.Action.CHECK_FOLD;
     }
   }
