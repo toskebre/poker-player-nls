@@ -21,8 +21,8 @@ public class Player {
         CardCollection kolekcija = new CardCollection();
         Card karta;
         for (JsonElement jsonElement : nase_karte) {
-            String suit = jsonElement.getAsJsonObject().get("suit").getAsString();
-            String rank = jsonElement.getAsJsonObject().get("rank").getAsString();
+            String suit = jsonElement.getAsJsonObject().get("suit").getAsString().toUpperCase();
+            String rank = jsonElement.getAsJsonObject().get("rank").getAsString().toUpperCase();
             karta = new Card(Card.CardSign.valueOf(suit), Card.CardNumber.valueOf(rank));
             kolekcija.addCard(karta);
         }
