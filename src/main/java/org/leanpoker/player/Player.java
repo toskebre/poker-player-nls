@@ -39,8 +39,6 @@ public class Player {
                 case "K":
                     r = "13";
                     break;
-                default:
-                    r = "0";
             }
             zbir += Integer.parseInt(r);
         }
