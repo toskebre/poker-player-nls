@@ -22,15 +22,15 @@ public class PlayerServlet extends HttpServlet {
         if (req.getParameter("action").equals("bet_request")) {
             String gameState = req.getParameter("game_state");
 
-            resp.getWriter().print(Player.betRequest(new JsonParser().parse(gameState)));
+            resp.getWriter().print(org.leanpoker.player.Player.betRequest(new JsonParser().parse(gameState)));
         }
         if (req.getParameter("action").equals("showdown")) {
             String gameState = req.getParameter("game_state");
 
-            Player.showdown(new JsonParser().parse(gameState));
+            org.leanpoker.player.Player.showdown(new JsonParser().parse(gameState));
         }
         if (req.getParameter("action").equals("version")) {
-            resp.getWriter().print(Player.VERSION);
+            resp.getWriter().print(org.leanpoker.player.Player.VERSION);
         }
     }
 }
