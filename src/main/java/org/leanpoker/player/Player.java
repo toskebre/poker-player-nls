@@ -25,7 +25,7 @@ public class Player {
         for (JsonElement jsonElement : nase_karte) {
             String suit = jsonElement.getAsJsonObject().get("suit").getAsString().toUpperCase();
             String rank = jsonElement.getAsJsonObject().get("rank").getAsString().toUpperCase();
-            String r;
+            String r = rank;
             switch (rank){
                 case "A":
                     r = "14";
