@@ -70,9 +70,9 @@ public class Player {
             return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt();
         }
 
-        System.out.println("zbir karata je");
+        System.out.print("zbir karata je:");
         System.out.print(zbir);
-        System.out.println("br karata je");
+        System.out.print("\nbr karata je:");
         System.out.print(brKarata);
         if (zbir > 16 || (zbir > 10 && brKarata == 1) || brKarata == 0){
             return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt();
