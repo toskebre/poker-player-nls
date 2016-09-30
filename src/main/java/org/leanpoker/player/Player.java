@@ -21,6 +21,7 @@ public class Player {
         CardCollection kolekcija = new CardCollection();
         Card karta;
         int zbir = 0;
+        int brKarata = nase_karte.size();
         for (JsonElement jsonElement : nase_karte) {
             String suit = jsonElement.getAsJsonObject().get("suit").getAsString().toUpperCase();
             String rank = jsonElement.getAsJsonObject().get("rank").getAsString().toUpperCase();
@@ -71,7 +72,7 @@ public class Player {
             return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt();
         }
 
-        if (zbir > 16){
+        if (zbir > 16 || (zbir > 10 && brKarata == 1) || brKarata == 0){
             return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt();
         }
         return 0;
