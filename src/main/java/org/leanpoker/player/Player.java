@@ -24,7 +24,24 @@ public class Player {
         for (JsonElement jsonElement : nase_karte) {
             String suit = jsonElement.getAsJsonObject().get("suit").getAsString().toUpperCase();
             String rank = jsonElement.getAsJsonObject().get("rank").getAsString().toUpperCase();
-            zbir += Integer.parseInt(rank);
+            String r;
+            switch (rank){
+                case "A":
+                    r = "14";
+                    break;
+                case "J":
+                    r = "11";
+                    break;
+                case "Q":
+                    r = "12";
+                    break;
+                case "K":
+                    r = "13";
+                    break;
+                default:
+                    r = "0";
+            }
+            zbir += Integer.parseInt(r);
             //karta = new Card(Card.CardSign.valueOf(suit), Card.CardNumber.valueOf(rank));
             //kolekcija.addCard(karta);
         }
