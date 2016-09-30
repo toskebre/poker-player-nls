@@ -40,7 +40,8 @@ public class AStoIgrati {
 
   private List<CardCombination> cardCombinations = new ArrayList<CardCombination>();
 
-  public AStoIgrati() {
+  public AStoIgrati(int currentBet, int newBet) {
+    cardCombinations.add(new Straight(currentBet, newBet));
     cardCombinations.add(new ThreeOfAKind());
     cardCombinations.add(new Pair());
     cardCombinations.add(new TwoPairs());

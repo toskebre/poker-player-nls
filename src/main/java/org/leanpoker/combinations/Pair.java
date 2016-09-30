@@ -22,11 +22,11 @@ public class Pair extends CardCombination {
     boolean combinationHit = combinationHit(hand);
     if (combinationHit) {
       System.out.println("NADJEN PAR. RAISE");
-
-      if (hand.getCardsInHand().size() > 5) {
+      int cardNumber = getPairNumber(hand);
+      if (hand.getCardsInHand().size() > 5 && cardNumber > 7) {
         return AStoIgrati.Action.ALL_IN;
       }
-      int cardNumber = getPairNumber(hand);
+
       if (cardNumber >=13) {
         return AStoIgrati.Action.ALL_IN;
       }

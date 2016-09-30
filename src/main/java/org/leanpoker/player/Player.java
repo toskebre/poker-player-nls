@@ -37,7 +37,7 @@ public class Player {
         }
 
 
-        AStoIgrati staIgrati = new AStoIgrati();
+        AStoIgrati staIgrati = new AStoIgrati(obj.get("current_buy_in").getAsInt(), mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt());
         AStoIgrati.Action action = staIgrati.staOdigrati(kolekcija);
 
         switch (action){
