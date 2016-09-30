@@ -44,6 +44,7 @@ public class Card {
     }
   }
 
+
   public enum CardNumber {
     ONE ("1"),
     TWO ("2"),
@@ -55,10 +56,10 @@ public class Card {
     EIGHT ("8"),
     NINE ("9"),
     TEN ("10"),
-    J ("J"),
-    A ("A"),
-    Q ("Q"),
-    K ("K");
+    J ("12"),
+    A ("11"),
+    Q ("13"),
+    K ("14");
 
 
     private String value;
@@ -70,6 +71,8 @@ public class Card {
     public String getValue() {
       return value;
     }
+
+    public Integer getIntValue() { return Integer.parseInt(value);}
   }
 
   public CardSign getSuit() {

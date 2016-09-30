@@ -17,7 +17,7 @@ import org.leanpoker.player.CardCollection;
 /**
  * Created by mtosic on 9/30/16.
  */
-public class ThreeOfAKind implements CardCombination {
+public class ThreeOfAKind implements orgh.leanpoker.combinations.CardCombination {
 
   public Integer CHECK_FOLD_CARD_IN_GAME_LIMIT = 7;
   public Integer FOLLOW_CARD_IN_GAME_LIMIT = 7;
