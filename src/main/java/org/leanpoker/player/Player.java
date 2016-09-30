@@ -23,8 +23,8 @@ public class Player {
         for (JsonElement jsonElement : nase_karte) {
             String suit = jsonElement.getAsJsonObject().get("suit").getAsString().toUpperCase();
             String rank = jsonElement.getAsJsonObject().get("rank").getAsString().toUpperCase();
-            karta = new Card(Card.CardSign.valueOf(suit), Card.CardNumber.valueOf(rank));
-            kolekcija.addCard(karta);
+            //karta = new Card(Card.CardSign.valueOf(suit), Card.CardNumber.valueOf(rank));
+            //kolekcija.addCard(karta);
         }
 
 
@@ -34,8 +34,8 @@ public class Player {
         for (JsonElement jsonElement : karte_na_stolu) {
             String suit = jsonElement.getAsJsonObject().get("suit").getAsString().toUpperCase();
             String rank = jsonElement.getAsJsonObject().get("rank").getAsString().toUpperCase();
-            karta = new Card(Card.CardSign.valueOf(suit), Card.CardNumber.valueOf(rank));
-            kolekcija.addCard(karta);
+            //karta = new Card(Card.CardSign.valueOf(suit), Card.CardNumber.valueOf(rank));
+            //kolekcija.addCard(karta);
 
             if(jsonElement.getAsJsonObject().get("rank").getAsString() == nase_karte.get(0).getAsJsonObject().get("rank").getAsString()){
                 br_istih_sa_1++;
