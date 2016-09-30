@@ -9,9 +9,8 @@
 // it only in accordance with the terms of the license agreement
 // you entered into with Betware.
 //==============================================================================
-package main.java.org.leanpoker.player;
+package org.leanpoker.player;
 
-import javax.smartcardio.Card;
 import java.util.List;
 
 /**

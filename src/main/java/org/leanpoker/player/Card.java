@@ -9,7 +9,7 @@
 // it only in accordance with the terms of the license agreement
 // you entered into with Betware.
 //==============================================================================
-package main.java.org.leanpoker.player;
+package org.leanpoker.player;
 
 /**
  * Created by mtosic on 9/30/16.

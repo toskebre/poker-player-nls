@@ -17,10 +17,26 @@ public class Player {
         JsonObject mi = igraci.get(ind).getAsJsonObject();
         JsonArray nase_karte = mi.get("hole_cards").getAsJsonArray();
         JsonArray karte_na_stolu = obj.get("community_cards").getAsJsonArray();
+
+        CardCollection kolekcija = new CardCollection();
+        Card karta;
+        for (JsonElement jsonElement : nase_karte) {
+            String suit = jsonElement.getAsJsonObject().get("suit").getAsString();
+            String rank = jsonElement.getAsJsonObject().get("rank").getAsString();
+            karta = new Card(Card.CardSign.valueOf(suit), Card.CardNumber.valueOf(rank));
+            kolekcija.addCard(karta);
+        }
+
+
         int br_istih_sa_1 = 0;
         int br_istih_sa_2 = 0;
 
         for (JsonElement jsonElement : karte_na_stolu) {
+            String suit = jsonElement.getAsJsonObject().get("suit").getAsString();
+            String rank = jsonElement.getAsJsonObject().get("rank").getAsString();
+            karta = new Card(Card.CardSign.valueOf(suit), Card.CardNumber.valueOf(rank));
+            kolekcija.addCard(karta);
+
             if(jsonElement.getAsJsonObject().get("rank").getAsString() == nase_karte.get(0).getAsJsonObject().get("rank").getAsString()){
                 br_istih_sa_1++;
             }
