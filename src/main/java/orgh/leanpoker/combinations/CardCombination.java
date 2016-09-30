@@ -9,7 +9,7 @@
 // it only in accordance with the terms of the license agreement
 // you entered into with Betware.
 //==============================================================================
-package main.java.orgh.leanpoker.combinations;
+package orgh.leanpoker.combinations;
 
 import org.leanpoker.player.CardCollection;
 
