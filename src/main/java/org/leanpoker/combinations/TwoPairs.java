@@ -9,37 +9,39 @@
 // it only in accordance with the terms of the license agreement
 // you entered into with Betware.
 //==============================================================================
-package orgh.leanpoker.combinations;
+package main.java.org.leanpoker.combinations;
 
-import org.leanpoker.player.Card;
 import org.leanpoker.player.CardCollection;
 
 /**
  * Created by mtosic on 9/30/16.
  */
-public class ThreeOfAKind implements orgh.leanpoker.combinations.CardCombination {
+public class TwoPairs extends CardCombination {
 
-  public Integer CHECK_FOLD_CARD_IN_GAME_LIMIT = 7;
-  public Integer FOLLOW_CARD_IN_GAME_LIMIT = 7;
-  public Integer RAISE_CARD_IN_GAME_LIMIT = 5;
 
-  public ThreeOfAKind() {}
+  public AStoIgrati.Action action(CardCollection hand) {
+    boolean combinationHit = combinationHit(hand);
 
-  public Integer action(CardCollection hand) {
-//    for (Card card : hand)
-    return 1;
+    if (combinationHit) {
+      return AStoIgrati.Action.RAISE;
+    } else {
+      return AStoIgrati.Action.CHECK_FOLD;
+    }
   }
 
   public boolean combinationHit(CardCollection hand) {
 
-    int[] cards = new int[15];
+    int[] cards = countCards(hand);
 
-    for (Card card : hand.getCardsInHand()) {
+    int numberOfHits = 0;
 
+    for (int cardNumber : cards) {
+      if (cardNumber == 3) {
+        numberOfHits++;
+      }
     }
 
-    return false;
+    return numberOfHits == 2;
   }
-
 
 }
