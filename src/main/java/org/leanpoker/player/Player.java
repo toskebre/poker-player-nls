@@ -73,7 +73,7 @@ public class Player {
         }
 
         if (zbir > 16 || (zbir > 10 && brKarata == 1) || brKarata == 0){
-            return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt();
+            return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt();
         }
         return 0;
     }
