@@ -5,6 +5,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.leanpoker.combinations.AStoIgrati;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
 
     static final String VERSION = "good ol' betware";
@@ -21,6 +24,46 @@ public class Player {
         Card karta;
         int zbir = 0;
         int brKarata = nase_karte.size();
+
+        List<Card> lista_nasi_karata = getCardsFromJson(nase_karte);
+        List<Card> lista_karata_na_stolu = getCardsFromJson(karte_na_stolu);
+        for (Card card : lista_nasi_karata) {
+            kolekcija.addCard(card);
+            zbir += card.getRank().getIntValue();
+        }
+
+        for (Card card : lista_karata_na_stolu) {
+            kolekcija.addCard(card);
+        }
+
+
+        AStoIgrati staIgrati = new AStoIgrati();
+        AStoIgrati.Action action = staIgrati.staOdigrati(kolekcija);
+
+        switch (action){
+            case ALL_IN:
+                return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt();
+            case FOLLOW:
+                return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt();
+            case RAISE:
+                return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt();
+        }
+
+        System.out.print("zbir karata je:");
+        System.out.print(zbir);
+        System.out.print("\nbr karata je:");
+        System.out.print(brKarata);
+
+        if (zbir > 16 || (zbir > 10 && brKarata == 1) || brKarata == 0){
+            return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt();
+        }
+
+        return 0;
+    }
+
+    private static List<Card> getCardsFromJson(JsonArray nase_karte) {
+        Card karta;
+        List<Card> kolekcija = new ArrayList<>();
         for (JsonElement jsonElement : nase_karte) {
             String suit = jsonElement.getAsJsonObject().get("suit").getAsString().toUpperCase();
             String rank = jsonElement.getAsJsonObject().get("rank").getAsString().toUpperCase();
@@ -39,73 +82,11 @@ public class Player {
                     r = "13";
                     break;
             }
-            zbir += Integer.parseInt(r);
 
             karta = new Card(Card.CardSign.valueOf(suit), Player.getNumber(r));
-            kolekcija.addCard(karta);
+            kolekcija.add(karta);
         }
-
-
-        int br_istih_sa_1 = 0;
-        int br_istih_sa_2 = 0;
-
-        for (JsonElement jsonElement : karte_na_stolu) {
-            String suit = jsonElement.getAsJsonObject().get("suit").getAsString().toUpperCase();
-            String rank = jsonElement.getAsJsonObject().get("rank").getAsString().toUpperCase();
-
-            if(jsonElement.getAsJsonObject().get("rank").getAsString().equals(nase_karte.get(0).getAsJsonObject().get("rank").getAsString())){
-                br_istih_sa_1++;
-            }
-            if(jsonElement.getAsJsonObject().get("rank").getAsString().equals(nase_karte.get(1).getAsJsonObject().get("rank").getAsString())){
-                br_istih_sa_2++;
-            }
-
-            String r = rank;
-            switch (rank){
-                case "A":
-                    r = "14";
-                    break;
-                case "J":
-                    r = "11";
-                    break;
-                case "Q":
-                    r = "12";
-                    break;
-                case "K":
-                    r = "13";
-                    break;
-            }
-            karta = new Card(Card.CardSign.valueOf(suit), Player.getNumber(r));
-            kolekcija.addCard(karta);
-        }
-
-        AStoIgrati staIgrati = new AStoIgrati();
-        AStoIgrati.Action action = staIgrati.staOdigrati(kolekcija);
-
-        switch (action){
-            case ALL_IN:
-                return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt();
-            case FOLLOW:
-                return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt();
-            case RAISE:
-                return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt();
-        }
-
-        if (nase_karte.get(0).getAsJsonObject().get("rank").getAsString().equals(nase_karte.get(1).getAsJsonObject().get("rank").getAsString())){
-            if (br_istih_sa_1 != 0){
-                return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt()  + obj.get("minimum_raise").getAsInt();
-            }
-            return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt();
-        }
-
-        System.out.print("zbir karata je:");
-        System.out.print(zbir);
-        System.out.print("\nbr karata je:");
-        System.out.print(brKarata);
-        if (zbir > 16 || (zbir > 10 && brKarata == 1) || brKarata == 0){
-            return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt();
-        }
-        return 0;
+        return kolekcija;
     }
 
     public static void showdown(JsonElement game) {
