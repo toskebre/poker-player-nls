@@ -5,8 +5,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.leanpoker.combinations.AStoIgrati;
 
-import java.util.Map;
-
 public class Player {
 
     static final String VERSION = "good ol' betware";
