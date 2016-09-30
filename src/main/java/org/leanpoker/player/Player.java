@@ -57,15 +57,15 @@ public class Player {
             //karta = new Card(Card.CardSign.valueOf(suit), Card.CardNumber.valueOf(rank));
             //kolekcija.addCard(karta);
 
-            if(jsonElement.getAsJsonObject().get("rank").getAsString() == nase_karte.get(0).getAsJsonObject().get("rank").getAsString()){
+            if(jsonElement.getAsJsonObject().get("rank").getAsString().equals(nase_karte.get(0).getAsJsonObject().get("rank").getAsString())){
                 br_istih_sa_1++;
             }
-            if(jsonElement.getAsJsonObject().get("rank").getAsString() == nase_karte.get(1).getAsJsonObject().get("rank").getAsString()){
+            if(jsonElement.getAsJsonObject().get("rank").getAsString().equals(nase_karte.get(1).getAsJsonObject().get("rank").getAsString())){
                 br_istih_sa_2++;
             }
         }
 
-        if (nase_karte.get(0).getAsJsonObject().get("rank").getAsString() == nase_karte.get(1).getAsJsonObject().get("rank").getAsString()){
+        if (nase_karte.get(0).getAsJsonObject().get("rank").getAsString().equals(nase_karte.get(1).getAsJsonObject().get("rank").getAsString())){
             if (br_istih_sa_1 != 0){
                 return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt()  + obj.get("minimum_raise").getAsInt();
             }
