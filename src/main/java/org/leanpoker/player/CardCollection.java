@@ -19,23 +19,23 @@ import java.util.List;
  */
 public class CardCollection {
 
-  private List<main.java.org.leanpoker.player.Card> cardsInHand;
+  private List<Card> cardsInHand;
 
-  public CardCollection (List<main.java.org.leanpoker.player.Card> cardsInHand) {
+  public CardCollection (List<Card> cardsInHand) {
     this.cardsInHand = cardsInHand;
   }
 
   public CardCollection(){}
 
-  public List<main.java.org.leanpoker.player.Card> getCardsInHand() {
+  public List<Card> getCardsInHand() {
     return cardsInHand;
   }
 
-  public void setCardsInHand(List<main.java.org.leanpoker.player.Card> cardsInHand) {
+  public void setCardsInHand(List<Card> cardsInHand) {
     this.cardsInHand = cardsInHand;
   }
 
-  public void addCard(main.java.org.leanpoker.player.Card card) {
+  public void addCard(Card card) {
     cardsInHand.add(card);
   }
 }
