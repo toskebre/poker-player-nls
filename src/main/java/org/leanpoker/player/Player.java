@@ -21,7 +21,6 @@ public class Player {
         JsonArray karte_na_stolu = obj.get("community_cards").getAsJsonArray();
 
         CardCollection kolekcija = new CardCollection();
-        Card karta;
         int zbir = 0;
         int brKarata = nase_karte.size();
 
@@ -42,10 +41,13 @@ public class Player {
 
         switch (action){
             case ALL_IN:
+                System.out.println("switch all in ");
                 return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt();
             case FOLLOW:
+                System.out.println("switch follow ");
                 return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt();
             case RAISE:
+                System.out.println("switch raise ");
                 return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt();
         }
 
