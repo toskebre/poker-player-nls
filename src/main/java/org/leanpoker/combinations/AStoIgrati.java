@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class AStoIgrati {
 
-  protected enum Action {
+  public enum Action {
      CHECK_FOLD ("1"),
      FOLLOW ("2"),
      RAISE ("3"),
