@@ -43,8 +43,6 @@ public class Player {
                     r = "0";
             }
             zbir += Integer.parseInt(r);
-            //karta = new Card(Card.CardSign.valueOf(suit), Card.CardNumber.valueOf(rank));
-            //kolekcija.addCard(karta);
         }
 
 
@@ -69,7 +67,7 @@ public class Player {
             if (br_istih_sa_1 != 0){
                 return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt()  + obj.get("minimum_raise").getAsInt();
             }
-            return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt();
+            return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt();
         }
 
         if (zbir > 16 || (zbir > 10 && brKarata == 1) || brKarata == 0){
