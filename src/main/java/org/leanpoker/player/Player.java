@@ -20,9 +20,11 @@ public class Player {
 
         CardCollection kolekcija = new CardCollection();
         Card karta;
+        int zbir = 0;
         for (JsonElement jsonElement : nase_karte) {
             String suit = jsonElement.getAsJsonObject().get("suit").getAsString().toUpperCase();
             String rank = jsonElement.getAsJsonObject().get("rank").getAsString().toUpperCase();
+            zbir += Integer.parseInt(rank);
             //karta = new Card(Card.CardSign.valueOf(suit), Card.CardNumber.valueOf(rank));
             //kolekcija.addCard(karta);
         }
@@ -49,6 +51,10 @@ public class Player {
             if (br_istih_sa_1 != 0){
                 return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt()  + obj.get("minimum_raise").getAsInt();
             }
+            return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt();
+        }
+
+        if (zbir > 18){
             return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt();
         }
         return 0;
