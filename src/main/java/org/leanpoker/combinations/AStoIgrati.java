@@ -22,10 +22,11 @@ import java.util.List;
 public class AStoIgrati {
 
   public enum Action {
-     CHECK_FOLD ("1"),
-     FOLLOW ("2"),
-     RAISE ("3"),
-     ALL_IN ("4");
+    FOLD ("0"),
+    CHECK ("1"),
+    FOLLOW ("2"),
+    RAISE ("3"),
+    ALL_IN ("4");
 
      private String value;
 
@@ -46,7 +47,7 @@ public class AStoIgrati {
   }
 
   public Action staOdigrati(CardCollection hand) {
-    Action currentAction = Action.CHECK_FOLD;
+    Action currentAction = Action.FOLD;
 
     for (CardCombination cardCombination : cardCombinations) {
       Action action = cardCombination.action(hand);

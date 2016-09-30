@@ -20,15 +20,33 @@ public class Pair extends CardCombination {
 
   public AStoIgrati.Action action(CardCollection hand) {
     boolean combinationHit = combinationHit(hand);
-
     if (combinationHit) {
       System.out.println("NADJEN PAR. RAISE");
-      return AStoIgrati.Action.RAISE;
+      int cardNumber = getPairNumber(hand);
+      if (cardNumber >=13) {
+        return AStoIgrati.Action.ALL_IN;
+      }
+      if (cardNumber >= 11 )
+        return AStoIgrati.Action.RAISE;
+      if (cardNumber >= 8)
+        return AStoIgrati.Action.FOLLOW;
+      return AStoIgrati.Action.FOLD;
     } else {
       System.out.println("PAR NIJE NADJEN. CHECK FOLD");
-      return AStoIgrati.Action.CHECK_FOLD;
+      return AStoIgrati.Action.FOLD;
     }
   }
+  public int getPairNumber(CardCollection hand) {
+    int[] cards = countCards(hand);
+    int cardNumberGot = 0;
+    for (int cardNumber : cards) {
+      if (cardNumber == 2){
+        cardNumberGot = cardNumber;
+      }
+    }
+    return cardNumberGot;
+  }
+
 
   public boolean combinationHit(CardCollection hand) {
 

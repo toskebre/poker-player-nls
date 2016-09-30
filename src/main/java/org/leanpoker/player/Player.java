@@ -30,6 +30,7 @@ public class Player {
             kolekcija.addCard(card);
             zbir += card.getRank().getIntValue();
         }
+        System.out.println(zbir);
 
         for (Card card : lista_karata_na_stolu) {
             kolekcija.addCard(card);
@@ -42,24 +43,31 @@ public class Player {
         switch (action){
             case ALL_IN:
                 System.out.println("switch all in ");
-                return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt();
+                return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt() * 3;
             case FOLLOW:
                 System.out.println("switch follow ");
                 return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt();
             case RAISE:
                 System.out.println("switch raise ");
                 return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt() + obj.get("minimum_raise").getAsInt();
+            case CHECK:
+                System.out.println("switch check");
+                return 0;
         }
 
-        System.out.print("zbir karata je:");
-        System.out.print(zbir);
-        System.out.print("\nbr karata je:");
-        System.out.print(brKarata);
-
-        if (zbir > 16 || (zbir > 10 && brKarata == 1) || brKarata == 0){
+        if (zbir > 17){
+            for (Card card : lista_nasi_karata) {
+                if (card.getRank().getIntValue() > 13){
+                    return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt();
+                }
+            }
+            if (karte_na_stolu.size() > 0){
+                return 0;
+            }
             return obj.get("current_buy_in").getAsInt() - mi.get("bet").getAsInt();
         }
 
+        System.out.println("nista nije dobro vracam 0");
         return 0;
     }
 

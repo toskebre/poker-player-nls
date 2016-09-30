@@ -26,7 +26,7 @@ public class ThreeOfAKind extends CardCombination {
       return AStoIgrati.Action.RAISE;
     } else {
       System.out.println("TRI ISTE NISU NADJENE. CHECK FOLD");
-      return AStoIgrati.Action.CHECK_FOLD;
+      return AStoIgrati.Action.FOLD;
     }
   }
 
