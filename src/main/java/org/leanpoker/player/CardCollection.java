@@ -11,6 +11,7 @@
 //==============================================================================
 package org.leanpoker.player;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.leanpoker.player.Card;
 
@@ -19,7 +20,7 @@ import org.leanpoker.player.Card;
  */
 public class CardCollection {
 
-  private List<Card> cardsInHand;
+  private List<Card> cardsInHand = new ArrayList<>();
 
   public CardCollection (List<Card> cardsInHand) {
     this.cardsInHand = cardsInHand;
