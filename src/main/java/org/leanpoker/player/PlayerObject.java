@@ -11,6 +11,8 @@
 //==============================================================================
 package main.java.org.leanpoker.player;
 
+import java.util.List;
+
 /**
  * Created by mtosic on 9/30/16.
  */
@@ -22,6 +24,7 @@ public class PlayerObject {
   private String version;
   private Double stack;
   private Double bet;
+  private CardCollection hand;
 
   public enum Status {
     ACTIVE ("active"),
@@ -42,13 +45,14 @@ public class PlayerObject {
 
   public PlayerObject() {};
 
-  public PlayerObject(String id, String name, Status status, String version, Double stack, Double bet) {
+  public PlayerObject(String id, String name, Status status, String version, Double stack, Double bet, CardCollection cardCollection) {
     this.id = id;
     this.name = name;
     this.status = status;
     this.version = version;
     this.stack = stack;
     this.bet = bet;
+    this.hand = cardCollection;
   }
 
   public String getId() {
@@ -97,5 +101,13 @@ public class PlayerObject {
 
   public void setBet(Double bet) {
     this.bet = bet;
+  }
+
+  public CardCollection getHand() {
+    return hand;
+  }
+
+  public void setHand(CardCollection hand) {
+    this.hand = hand;
   }
 }
