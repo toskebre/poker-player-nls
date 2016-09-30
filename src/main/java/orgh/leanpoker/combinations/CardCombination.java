@@ -9,33 +9,16 @@
 // it only in accordance with the terms of the license agreement
 // you entered into with Betware.
 //==============================================================================
-package org.leanpoker.player;
+package main.java.orgh.leanpoker.combinations;
 
-import java.util.List;
-import org.leanpoker.player.Card;
+import org.leanpoker.player.CardCollection;
 
 /**
  * Created by mtosic on 9/30/16.
  */
-public class CardCollection {
+public interface CardCombination {
 
-  private List<Card> cardsInHand;
+  public Integer action(CardCollection hand);
 
-  public CardCollection (List<Card> cardsInHand) {
-    this.cardsInHand = cardsInHand;
-  }
-
-  public CardCollection(){}
-
-  public List<Card> getCardsInHand() {
-    return cardsInHand;
-  }
-
-  public void setCardsInHand(List<Card> cardsInHand) {
-    this.cardsInHand = cardsInHand;
-  }
-
-  public void addCard(Card card) {
-    cardsInHand.add(card);
-  }
+  public boolean combinationHit(CardCollection hand);
 }
